@@ -1,0 +1,29 @@
+package main
+
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
+
+// Estructura para representar un comentario
+type Comentario struct {
+	Usuario  string `json:"usuario"`
+	Comentario string `json:"comentario"`
+	Fecha    string `json:"fecha"`
+}
+
+// Estructura para representar los "likes" de una nota
+type Like struct {
+	Usuario string `json:"usuario"`
+	Fecha   string `json:"fecha"`
+}
+
+// Estructura principal para representar una nota
+type Nota struct {
+	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	NombreUsuario string           `bson:"nombre_usuario" json:"nombre_usuario"`
+	FotoUsuario  string           `bson:"foto_usuario" json:"foto_usuario"`
+	Tiempo      string           `bson:"tiempo" json:"tiempo"`
+	Descripcion string           `bson:"descripcion" json:"descripcion"`
+	Comentarios []Comentario     `bson:"comentarios" json:"comentarios"`
+	Likes       []Like           `bson:"likes" json:"likes"`
+}
